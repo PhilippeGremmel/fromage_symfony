@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    <div class="container">
+    <h1>Tous les fromages de France</h1>
+        <div class="row">
+
+        {% for entity in entities %}
+            <div class="col-lg-3">
+                <h3><a href="{{ path('article_show', { 'id': entity.id }) }}">{{ entity.title }}</a></h3>
+                <img src="{{ entity.image | imagine_filter('my_thumb') }}" />
+                {{ entity.content|truncate(150) }}
+
+
+                <ul>
+
+
+
+                        <a href="{{ path('article_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-eye-open">
+                        </span></a>
+
+
+
+                        <a href="{{ path('article_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-edit">
+                        </span></a>
+
+                </ul>
+
+            </div>
+        {% endfor %}
+
+        </div>
+
+
+
+
+            <a href="{{ path('article_create') }}">
+                <button type="button" class="btn btn-success btn-lg">Ajouter un fromage</button>
+            </a>
+
+
+    </div>
+    {% endblock %}

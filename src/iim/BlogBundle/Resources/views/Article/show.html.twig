@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+
+
+{% block body -%}
+    <div class="container">
+        <div class="row">
+
+                <div class="col-md-6 col-md-offset-2">
+
+                    <h1>{{ entity.title }}</h1>
+
+                    <img class="cheese_single" src="{{ entity.image | imagine_filter('my_thumb') }}" />
+
+                    <p>{{ entity.content }}</p>
+
+                    <h3>Type de Pâte : {{ entity.pate }}</h3>
+                </div>
+
+
+                    <div class="col-md-6 col-md-offset-2">
+
+                       <a href="{{ path('article_edit', { 'id': entity.id }) }}">
+                                <button type="button" class="btn btn-warning">
+                                    Modifier
+                                 </button>
+                            </a>
+
+                        {{ form(delete_form) }}
+
+                        <a href="{{ path('article') }}">
+                            <span class="glyphicon glyphicon-arrow-left">Retour</span>
+                        </a>
+
+                    </div>
+
+         </div>
+
+
+
+
+
+
+    </div>
+{% endblock %}
